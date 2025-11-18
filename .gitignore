@@ -1,0 +1,21 @@
+# Node modules
+node_modules/
+
+# Electron
+dist/
+out/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Environment
+.env

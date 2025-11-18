@@ -1,0 +1,19 @@
+{
+  "name": "predictive-monitoring",
+  "version": "1.0.0",
+  "description": "Система предиктивного мониторинга двигателя (температура и вибрация)",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev"
+  },
+  "keywords": ["esp32", "monitoring", "predictive", "electron"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.6.1",
+    "ws": "^8.13.0",
+    "electron": "^28.0.0"
+  }
+}

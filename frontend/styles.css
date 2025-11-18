@@ -1,0 +1,279 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #333;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+header {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+header h1 {
+  color: #2d3748;
+  margin-bottom: 15px;
+  font-size: 28px;
+}
+
+.status-bar {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-label {
+  color: #718096;
+  font-weight: 500;
+}
+
+.status-indicator {
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.status-indicator.connected {
+  background: #48bb78;
+  color: white;
+}
+
+.status-indicator.disconnected {
+  background: #f56565;
+  color: white;
+}
+
+#last-update {
+  color: #4a5568;
+  font-size: 14px;
+}
+
+/* Текущие показания */
+.current-readings {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+  color: #2d3748;
+  margin-bottom: 15px;
+  font-size: 18px;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 10px;
+}
+
+.value-display {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.value {
+  font-size: 48px;
+  font-weight: 700;
+  color: #667eea;
+}
+
+.unit {
+  font-size: 24px;
+  color: #718096;
+}
+
+.xyz-values {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.axis-value {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: #f7fafc;
+  border-radius: 6px;
+}
+
+.axis-label {
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.value-small {
+  font-size: 18px;
+  font-weight: 600;
+  color: #667eea;
+}
+
+.magnitude {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: #edf2f7;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.status-normal {
+  color: #48bb78;
+  font-weight: 600;
+  text-align: center;
+  padding: 8px;
+  background: #c6f6d5;
+  border-radius: 6px;
+}
+
+.status-warning {
+  color: #ed8936;
+  font-weight: 600;
+  text-align: center;
+  padding: 8px;
+  background: #feebc8;
+  border-radius: 6px;
+}
+
+.status-danger {
+  color: #f56565;
+  font-weight: 600;
+  text-align: center;
+  padding: 8px;
+  background: #fed7d7;
+  border-radius: 6px;
+}
+
+/* Графики */
+.charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.chart-container {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container h3 {
+  color: #2d3748;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+canvas {
+  max-height: 300px;
+}
+
+/* Алерты */
+.alerts {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.alerts h3 {
+  color: #2d3748;
+  margin-bottom: 15px;
+  font-size: 18px;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 10px;
+}
+
+.alerts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.alert-item {
+  padding: 12px 15px;
+  border-radius: 6px;
+  border-left: 4px solid;
+  font-size: 14px;
+}
+
+.alert-item.info {
+  background: #bee3f8;
+  border-color: #3182ce;
+  color: #2c5282;
+}
+
+.alert-item.warning {
+  background: #feebc8;
+  border-color: #dd6b20;
+  color: #7c2d12;
+}
+
+.alert-item.danger {
+  background: #fed7d7;
+  border-color: #e53e3e;
+  color: #742a2a;
+}
+
+.alert-item.success {
+  background: #c6f6d5;
+  border-color: #38a169;
+  color: #22543d;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .charts {
+    grid-template-columns: 1fr;
+  }
+  
+  .current-readings {
+    grid-template-columns: 1fr;
+  }
+  
+  header h1 {
+    font-size: 22px;
+  }
+  
+  .value {
+    font-size: 36px;
+  }
+}

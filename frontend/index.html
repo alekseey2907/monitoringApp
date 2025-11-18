@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Предиктивный мониторинг двигателя</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Заголовок -->
+    <header>
+      <h1>🔧 Система предиктивного мониторинга двигателя</h1>
+      <div class="status-bar">
+        <div class="status-item">
+          <span class="status-label">ESP32:</span>
+          <span id="esp32-status" class="status-indicator disconnected">Отключено</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">Последнее обновление:</span>
+          <span id="last-update">--</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Панель с текущими показаниями -->
+    <section class="current-readings">
+      <div class="card">
+        <h3>🌡️ Температура</h3>
+        <div class="value-display">
+          <span id="temp-value" class="value">--</span>
+          <span class="unit">°C</span>
+        </div>
+        <div id="temp-status" class="status-normal">Норма</div>
+      </div>
+
+      <div class="card">
+        <h3>📊 Ускорение (м/с²)</h3>
+        <div class="xyz-values">
+          <div class="axis-value">
+            <span class="axis-label">X:</span>
+            <span id="ax-value" class="value-small">--</span>
+          </div>
+          <div class="axis-value">
+            <span class="axis-label">Y:</span>
+            <span id="ay-value" class="value-small">--</span>
+          </div>
+          <div class="axis-value">
+            <span class="axis-label">Z:</span>
+            <span id="az-value" class="value-small">--</span>
+          </div>
+        </div>
+        <div class="magnitude">
+          <span>Магнитуда:</span>
+          <span id="accel-mag" class="value-small">--</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>🔄 Гироскоп (рад/с)</h3>
+        <div class="xyz-values">
+          <div class="axis-value">
+            <span class="axis-label">X:</span>
+            <span id="gx-value" class="value-small">--</span>
+          </div>
+          <div class="axis-value">
+            <span class="axis-label">Y:</span>
+            <span id="gy-value" class="value-small">--</span>
+          </div>
+          <div class="axis-value">
+            <span class="axis-label">Z:</span>
+            <span id="gz-value" class="value-small">--</span>
+          </div>
+        </div>
+        <div class="magnitude">
+          <span>Магнитуда:</span>
+          <span id="gyro-mag" class="value-small">--</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Графики -->
+    <section class="charts">
+      <div class="chart-container">
+        <h3>📈 График температуры</h3>
+        <canvas id="tempChart"></canvas>
+      </div>
+
+      <div class="chart-container">
+        <h3>📈 График ускорения</h3>
+        <canvas id="accelChart"></canvas>
+      </div>
+
+      <div class="chart-container">
+        <h3>📈 График гироскопа</h3>
+        <canvas id="gyroChart"></canvas>
+      </div>
+
+      <div class="chart-container">
+        <h3>📈 Вибрация (магнитуда ускорения)</h3>
+        <canvas id="vibrationChart"></canvas>
+      </div>
+    </section>
+
+    <!-- Алерты и предупреждения -->
+    <section class="alerts">
+      <h3>⚠️ Предупреждения и алерты</h3>
+      <div id="alerts-container" class="alerts-list">
+        <div class="alert-item info">Система готова к мониторингу</div>
+      </div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
