@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "dev": "electron . --dev"
+    "dev": "electron . --dev",
+    "start-web": "node server-standalone.js"
   },
   "keywords": ["esp32", "monitoring", "predictive", "electron"],
   "author": "",
